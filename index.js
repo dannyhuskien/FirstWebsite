@@ -13,7 +13,12 @@ app.listen(3000, function(){
 });
 
 app.get('/calc', function(req, res) {
-    res.render('calc');
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    let a = Math.random();
+    const color = `rgba(${r},${g},${b},${a})`;
+    res.render('calc', {color});
 });
 
 app.post('/calc', function(req, res) {
