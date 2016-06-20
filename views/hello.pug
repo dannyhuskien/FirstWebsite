@@ -1,0 +1,19 @@
+doctype html
+html(lang = 'en')
+  head
+    title Hello World
+  body
+    - let nums = [5,6,7]
+    ol#main.a.b.c
+      each num in nums
+        li= num
+
+    h1= 3*3
+    h1 This is awesome!
+    h2 more awesome
+    div
+      a(href='http://google.com') google
+    ul
+      li A
+      li B
+      li C
