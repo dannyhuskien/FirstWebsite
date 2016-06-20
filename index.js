@@ -1,9 +1,41 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
 const app = express();
+
 app.set('view engine', 'pug');
+app.use(express.static(path.join(__dirname, 'static')));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.listen(3000, function(){
   console.log('server is listening');
+});
+
+app.get('/calc', function(req, res) {
+    res.render('calc');
+});
+
+app.post('/calc', function(req, res) {
+  const y = req.body.y * 1;
+  const x = req.body.x * 1;
+  const op = req.body.op;
+  let result = 0;
+  switch (op) {
+    case '+':
+      result = x+y;
+      break;
+    case '-':
+      result = x-y;
+      break;
+    case '*':
+      result = x*y;
+      break;
+    case '/':
+      result = x/y;
+      break;
+  }
+  res.render('calc', {x,y,result, op});
 });
 
 app.get('/hello', function(req, res){

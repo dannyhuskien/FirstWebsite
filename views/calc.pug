@@ -1,0 +1,13 @@
+doctype html
+html(lang='en')
+    head
+      title My Awesome calc
+      link(href='/style.css', rel='stylesheet')
+    body
+      h1 Super Calc
+      form(action='/calc', method='post')
+        input(type='number', name='x', value= x)
+        input(type='text', name='op', value= op)
+        input(type='number', name='y', value = y)
+        button(type='submit') =
+        span= result
